@@ -1,0 +1,65 @@
+---
+agent:
+    # account Agent key (default: None, this is a required parameter)
+    key: {{ outlyer_agent_key }}
+
+    # enable debug logging (default: false)
+    debug: {{ outlyer_agent_debug }}
+
+    # override the Agent hostname (default: auto-detected)
+{% if outlyer_agent_name is defined %}
+    hostname: {{ outlyer_agent_name }}
+{% else %}
+    # hostname: "my_server"
+{% endif %}
+
+    # Set host labels (default: None)
+{% if outlyer_agent_host_labels is defined %}
+    labels:
+{% for label, value in outlyer_agent_host_labels.iteritems() %}
+    {{ label }} : {{ value }}
+{% endfor %}
+{% endif %}
+
+
+    # Choose which labels are going to be added to metric dimensions
+{% if outlyer_agent_metric is defined %}
+    metric_labels:
+{% for label in outlyer_agent_metric_labels %}
+    - {{ label }}
+{% endfor %}
+{% endif %}
+
+    # location for the agent to store its files.
+    # The agent needs to have write access to this folder (default: /etc/outlyer)
+    # home_dir: '/etc/outlyer'
+
+    # Locations of user plugins (default: /etc/outlyer/config.d)
+    # config_dir: "/etc/outlyer/config.d"
+
+    # location for check plugin files (default: /etc/outlyer/plugins)
+    # plugin_dir: '/etc/outlyer/plugins'
+
+    # location for Agent server connection.
+    # This should not need to be changed (default: exchange.outlyer.com)
+    server: "{{ outlyer_agent_endpoint }}"
+
+    # solo mode disables central configuration
+    solo: {{ outlyer_agent_solo }}
+
+    # enable the docker check (default: false)
+    docker: {{ outlyer_agent_docker }}
+
+    # for the docker check, set where it will find the host files needed
+    # to read containers performance data. By default, it assumes that the
+    # agent is running inside a docker container and the host files are
+    # mounted under '/host'. If you are running the agent directly on a host
+    # change that to ''/'. Please see documentation for more info
+    # rootfs: '/'
+
+    # port used for the agent REST api (default: 2014)
+    # set zero (0) to disable
+    # api_port: 2014
+
+    # ip used for the agent REST api (default: '127.0.0.1')
+    # api_host: '127.0.0.1'

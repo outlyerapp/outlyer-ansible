@@ -1,0 +1,12 @@
+---
+# Ubuntu specific dataloop stuff
+- name: install https apt transport
+  apt: name=apt-transport-https state=present
+
+# Add an Apt signing key, will not download if present
+- name: Outlyer gpg key
+  apt_key: id=ACB6D967 url='https://packages.outlyer.com/outlyer-pubkey.gpg' state=present
+
+- name: Outlyer apt repository
+  apt_repository: repo='deb https://packages.outlyer.com/debian/ stable main' state=present
+  filename: outlyer.list

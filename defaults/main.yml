@@ -1,0 +1,30 @@
+---
+
+## outlyer agent key (available from web UI)
+outlyer_agent_key: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+# enable debug logging
+outlyer_agent_debug: "false"
+
+# solo mode disables central configuration
+outlyer_agent_solo: "false"
+
+# enable the docker check
+outlyer_agent_docker: "false"
+
+## outlyer agent endpoint
+outlyer_agent_endpoint: wss://agent.outlyer.com
+
+## key value pairings of host labels
+# outlyer_agent_host_labels:
+#   name: foo
+
+# # List of host labels to aply to metrics
+# outlyer_agent_metric_labels:  
+#   - name
+
+## override agent name (defaults to hostname if not defined)
+# outlyer_agent_name: hostname
+
+# Allow role to handle service start/restart
+outlyer_manage_service: true
