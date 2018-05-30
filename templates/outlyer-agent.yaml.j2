@@ -17,13 +17,13 @@ agent:
 {% if outlyer_agent_host_labels is defined %}
     labels:
 {% for label, value in outlyer_agent_host_labels.iteritems() %}
-    {{ label }} : {{ value }}
+      {{ label }} : {{ value }}
 {% endfor %}
 {% endif %}
 
 
     # Choose which labels are going to be added to metric dimensions
-{% if outlyer_agent_metric is defined %}
+{% if outlyer_agent_metric_labels is defined %}
     metric_labels:
 {% for label in outlyer_agent_metric_labels %}
     - {{ label }}
