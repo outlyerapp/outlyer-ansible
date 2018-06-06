@@ -27,4 +27,4 @@ outlyer_agent_endpoint: wss://agent.outlyer.com
 # outlyer_agent_name: hostname
 
 # Allow role to handle service start/restart
-outlyer_manage_service: true
+outlyer_manage_service: "true"
