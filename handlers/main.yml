@@ -1,4 +1,7 @@
 ---
 - name: restart outlyer-agent
-  service: name=outlyer-agent enabled=yes state=restarted
+  service:
+    name: outlyer-agent
+    enabled: yes
+    state: restarted
   when: outlyer_manage_service

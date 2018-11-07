@@ -9,9 +9,16 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'RedHat' or ansible_distribution == 'Amazon'
 
 - name: Install Outlyer Agent
-  package: name=outlyer-agent state=present
+  package:
+    name: outlyer-agent
+    state: present
 
 - name: outlyer config
   become: yes
-  template: src=outlyer-agent.yaml.j2 dest=/etc/outlyer/agent.yaml owner=outlyer group=outlyer mode=640
+  template:
+    src: outlyer-agent.yaml.j2
+    dest: /etc/outlyer/agent.yaml
+    owner: outlyer
+    group: outlyer
+    mode: 640
   notify: restart outlyer-agent
